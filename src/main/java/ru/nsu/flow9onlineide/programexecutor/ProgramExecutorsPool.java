@@ -1,6 +1,7 @@
 package ru.nsu.flow9onlineide.programexecutor;
 
 import lombok.SneakyThrows;
+import ru.nsu.flow9onlineide.utils.FileCleaner;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,6 +20,7 @@ public class ProgramExecutorsPool {
 
     private ProgramExecutorsPool() {
         executorService = Executors.newCachedThreadPool();
+        executorService.submit(new FileCleaner());
         clientsPool = new HashMap<>();
     }
 
